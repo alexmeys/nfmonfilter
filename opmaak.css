@@ -1,0 +1,101 @@
+/*Algemene opmaak v/h document*/
+body
+{
+  background-color:#faf6cc;
+  margin:0px;
+  padding:0px;
+  font-family:"Comic Sans MS";
+  font-size:14px;
+}
+h1
+{
+  text-align:center;
+  font-size:14px;
+  padding:0px;
+  margin:0px;
+}
+h2
+{
+  text-align:center;
+  font-size:14px;
+  padding:inherit;
+  margin:inherit;
+}
+
+/*Omhulsel v/d site*/
+#container
+{
+  width:800px;
+  margin:0 auto;
+}
+
+/*Hoofd - banner*/
+#header
+{
+  height:120px;
+  width:100%;
+  float:left;
+  /*background-color:#000;*/
+  background-image:url("banner.png");
+}
+
+/*Navigatie*/
+#menu
+{
+  width:100%;
+  height:40px;
+  background-color:#1b6889;
+  float:left;
+}
+#menu ul{list-style-type:none;}
+#menu li{display:inline;}
+#menu ul li a
+{
+  font-size:15px;
+  text-align:center;
+  text-decoration:none;
+  margin:20px;
+  padding:5px 20px 5px 20px;
+  line-height:1.3em;
+}
+#menu a:link {color:#fff;}
+#menu a:visited{color:#fff;}
+#menu a:hover{color:#333;}
+#menu a:active{color:#fff;}
+
+/*Inhoud*/
+#content
+{
+  background-color:#faf6cc;
+  width:98%;
+  float:left; 
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left:20px;
+  padding-right:20px;
+  background-attachment:scroll;
+}
+* html #content
+{
+  height: 100%;
+}
+table
+{
+  border-collapse:collapse;
+  border:1px;
+}
+td
+{
+  text-align:left;
+}
+#wrapper a
+{
+  text-decoration:none;
+}
+/*Footerke*/
+#footer
+{
+  text-align:center;
+  color:#fff;
+}
+#footer a{text-decoration:none;}

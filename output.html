@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="opmaak.css" type="text/css"/>
+<script language="javascript" type="text/javascript" src="tablefilter.js"></script>
+<style type="text/css">
+  .oneven{background-color:#dad59c;}
+  table{margin-left:auto; margin-right:auto; overflow:hidden;}
+  table tr:hover{font-weight:bold; cursor:default;}
+  th
+  {
+      font-weight:normal;
+      color:#fff;
+      background-color:#1b6889;
+   }
+   td{padding:3px;}
+   br.klein{line-height:5px;}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("table tr:nth-child(odd)").addClass("oneven");
+    });
+</script>
+<title>Data Viewer</title>
+</head>
+<body>
+    <div id="content">
+	<h1>Overzicht netwerk</h1>
+	<p><input type="button" value="Terug" onClick="history.go(-1);"></p>
+      <div id="wrapper">
+        <script type="text/javascript">
+if (window.XMLHttpRequest)
+  {
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","datafile.xml",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML; 
+
+document.write("<table id='klanten' class='tbklant' border='1' width='100%'>");
+document.write("<tr>");
+document.write("<th style='text-align:left;'>Merk </th>");
+document.write("<th style='text-align:left;'>Model </th>");
+document.write("<th style='text-align:left;'>Type </th>");
+document.write("<th style='text-align:left;'>Besturing </th>");
+document.write("<th style='text-align:left;'>Ram </th>");
+document.write("<th style='text-align:left;'>Cname </th>");
+document.write("<th style='text-align:left;'>Login </th>");
+document.write("<th style='text-align:left;'>S/n </th>");
+document.write("<th style='text-align:left;'>d/s </th>");
+document.write("<th style='text-align:left;'>IP </th>");
+document.write("<th style='text-align:left;'>Mac </th>");
+document.write("</tr>");
+var x=xmlDoc.getElementsByTagName("machine");
+for (i=0;i<=x.length;i++)
+  { 
+  document.write("<tr><td>");
+  var manu = x[i].getElementsByTagName('manufacturer')[0];
+  var man = manu.firstChild ? manu.firstChild.data : "";
+  document.write(man);
+  document.write("</td><td>");
+  var mode = x[i].getElementsByTagName('model')[0];
+  var mod = mode.firstChild ? mode.firstChild.data : "";
+  document.write(mod);
+  document.write("</td><td>");  
+  var chass = x[i].getElementsByTagName('chassis')[0];
+  var chas = chass.firstChild ? chass.firstChild.data : "";
+  document.write(chas);
+  document.write("</td><td>");
+  var bestu = x[i].getElementsByTagName('os')[0];
+  var best = bestu.firstChild ? bestu.firstChild.data : "";
+  var sp = x[i].getElementsByTagName('servicepack')[0];
+  var serv = sp.firstChild ? sp.firstChild.data : "";
+  document.write(best + ", SP: "+ serv);
+  document.write("</td><td>");
+  var memo = x[i].getElementsByTagName('ram')[0];
+  var mem = memo.firstChild ? memo.firstChild.data : "";
+  document.write(mem);
+  document.write("</td><td>");
+  var naam = x[i].getElementsByTagName('name')[0];
+  var nm = naam.firstChild ? naam.firstChild.data : "";
+  document.write(nm);
+  document.write("</td><td>");
+  var gebr = x[i].getElementsByTagName('user')[0];
+  var geb = gebr.firstChild ? gebr.firstChild.data : "";
+  document.write(geb);
+  document.write("</td><td>");
+  var sn = x[i].getElementsByTagName('SerialNumber')[0];
+  var ser = sn.firstChild ? sn.firstChild.data : "";
+  document.write(ser);
+  document.write("</td><td>"); 
+  var ds = x[i].getElementsByTagName('deviceserial')[0];
+  var dev = ds.firstChild ? ds.firstChild.data : "";
+  document.write(dev);
+  document.write("</td><td>");
+  var ip = x[i].getElementsByTagName('ip')[0];
+  var add = ip.firstChild ? ip.firstChild.data : "";
+  document.write(add);
+  document.write("</td><td>");
+  var mac = x[i].getElementsByTagName('mac1')[0];
+  var mc = mac.firstChild ? mac.firstChild.data : ""; 
+  document.write(mc);
+  document.write("</td></tr>");
+  }
+document.write("</table>");
+</script>
+<script language="javascript" type="text/javascript">
+         //<![CDATA[
+	      setFilterGrid("klanten");
+         //]]>
+        </script>
+      </div>
+    </div>
+    <div id="footer"><a href="mailto:alex@alexmeys.hostzi.com"></a></div>
+</body>
+</html>
